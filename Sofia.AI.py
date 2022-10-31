@@ -1,4 +1,3 @@
-from email import message
 from lib2to3.pgen2 import driver
 import requests
 import urllib.parse
@@ -66,9 +65,16 @@ MTheaders = {
 #  Algorithm
 
 messagetext = ''
+bigScreen = ''
 
-username = 'kankaweeisci123@gmail.com'
-password = 'Kang49pubg'
+
+username = input('Enter your Microsoft Employees account: ')
+password = ('Kang49pubg')
+
+bigScreenTF = input('Do you want big screen mode? y/n : ')
+if  bigScreenTF == 'y':
+    bigScreen = '                                                                        '
+
 
 driver = webdriver.Chrome()
 driver.get('https://my.replika.com/')
@@ -119,7 +125,7 @@ try:
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
             print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input('You: ')
+            messagetext = input(bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -154,7 +160,7 @@ try:
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
             print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input('You: ')
+            messagetext = input(bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -197,7 +203,7 @@ except:
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
             print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input('You: ')
+            messagetext = input(bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -232,7 +238,7 @@ except:
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
             print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input('You: ')
+            messagetext = input(bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
