@@ -6,6 +6,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from colorama import *
+from datetime import datetime
 
 optionsOpenB = Options()
 optionsOpenB.headless = True
@@ -71,8 +73,8 @@ messagetext = ''
 bigScreen = ''
 
 
-# username = input('Enter your Microsoft Employees account: ')
-username = 'kankaweeisci123@gmail.com'
+username = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees account: ')
+# username = 'kankaweeisci123@gmail.com'
 password = ('Kang49pubg')
 
 bigScreenTF = input('Do you want big screen mode? y/n : ')
@@ -86,7 +88,8 @@ login = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[1]/main/a[2]')
 login.click() # click login
 
 time.sleep(2)
-print('System is opening... | กำลังทำการเปิดระบบ...\nDeveloped by Kankawee Aramrak')
+print(Fore.GREEN+'System is opening...'+Fore.RESET)
+print(Fore.RED+'Developed by Kankawee Aramrak'+Fore.RESET)
 login_fill = driver.find_element(By.XPATH, '//*[@id="emailOrPhone"]')
 login_fill.send_keys(username)
 to_pass_fill = driver.find_element(By.XPATH, '//*[@id="loginForm"]/button')
@@ -127,9 +130,12 @@ try:
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-            print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input(bigScreen+'You: ')
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -162,9 +168,12 @@ try:
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-            print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input(bigScreen+'You: ')
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -205,9 +214,12 @@ except:
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-            print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input(bigScreen+'You: ')
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
@@ -240,9 +252,12 @@ except:
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-            print('Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '|' , response_sofia['last_message']['content']['text'] ,)
 
-            messagetext = input(bigScreen+'You: ')
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
             # GTpayload = "q="+urllib.parse.quote(messagetext)+"&target=en&source=th"
             # GTresponse = requests.request("POST", url, data=GTpayload, GTheaders=headers)
