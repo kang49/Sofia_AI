@@ -2,10 +2,13 @@ from lib2to3.pgen2 import driver
 import requests
 import urllib.parse
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+optionsOpenB = Options()
+optionsOpenB.headless = True
 
 cookies_sofia = {
     'AMP_fcad1c9816': 'JTdCJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJkZXZpY2VJZCUyMiUzQSUyMjBmZjMyYWQ3LWVmYTEtNGExYy05ZmNmLWY4ZjFiNmYyZmQ1NCUyMiUyQyUyMnNlc3Npb25JZCUyMiUzQTE2NjcxNTM3NTQxMDAlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTY2NzE1MzgwMzgxMyUyQyUyMnVzZXJJZCUyMiUzQSUyMjVmNDhkOGQ5ODFlOWE5MDAwNzc1NzhjNiUyMiU3RA==',
@@ -68,7 +71,8 @@ messagetext = ''
 bigScreen = ''
 
 
-username = input('Enter your Microsoft Employees account: ')
+# username = input('Enter your Microsoft Employees account: ')
+username = 'kankaweeisci123@gmail.com'
 password = ('Kang49pubg')
 
 bigScreenTF = input('Do you want big screen mode? y/n : ')
@@ -76,7 +80,7 @@ if  bigScreenTF == 'y':
     bigScreen = '                                                                        '
 
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=optionsOpenB)
 driver.get('https://my.replika.com/')
 login = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[1]/main/a[2]')
 login.click() # click login
