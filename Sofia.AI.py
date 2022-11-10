@@ -150,6 +150,9 @@ try:
                 if response_sofia['last_message']['content']['text'] != messagetext:
                     break
             
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+                
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
@@ -157,8 +160,6 @@ try:
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
 
-            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
-            tts.save("sofia.mp3")
             sofiaSound = vlc.MediaPlayer('sofia.mp3')
             sofiaSound.play()
 
@@ -195,12 +196,18 @@ try:
                 if response_sofia['last_message']['content']['text'] != messagetext:
                     break
             
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+                
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            sofiaSound = vlc.MediaPlayer('sofia.mp3')
+            sofiaSound.play()
 
             messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
@@ -243,6 +250,9 @@ except:
                 if response_sofia['last_message']['content']['text'] != messagetext:
                     break
             
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+                
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
@@ -250,8 +260,6 @@ except:
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
 
-            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
-            tts.save("sofia.mp3")
             sofiaSound = vlc.MediaPlayer('sofia.mp3')
             sofiaSound.play()
 
@@ -288,6 +296,9 @@ except:
                 if response_sofia['last_message']['content']['text'] != messagetext:
                     break
             
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+                
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
@@ -295,8 +306,6 @@ except:
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
 
-            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
-            tts.save("sofia.mp3")
             sofiaSound = vlc.MediaPlayer('sofia.mp3')
             sofiaSound.play()
 
