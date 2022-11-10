@@ -1,3 +1,4 @@
+import getpass
 from lib2to3.pgen2 import driver
 import requests
 import urllib.parse
@@ -8,6 +9,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 from colorama import *
 from datetime import datetime
+from gtts import gTTS
+import vlc
 
 optionsOpenB = Options()
 optionsOpenB.headless = True
@@ -72,9 +75,26 @@ MTheaders = {
 messagetext = ''
 bigScreen = ''
 
+microUser = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees Account: ')
+print('Logining...')
+if microUser == 'A.Kankawee@microsoft.com':
+    time.sleep(3)
+else:
+    time.sleep(3)
+    print('This ID is not access to Azure HPC')
+    exit()
 
-username = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees account: ')
-# username = 'kankaweeisci123@gmail.com'
+microPass = getpass.getpass('Azure AI SuperComputer Passwd: ')
+print('Checking...')
+if microPass == 'G49@microsoft':
+    time.sleep(3)
+else:
+    time.sleep(3)
+    print('Passworld is incorrect')
+    exit()
+
+# username = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees account: ')
+username = 'kankaweeisci123@gmail.com'
 password = ('Kang49pubg')
 
 bigScreenTF = input('Do you want big screen mode? y/n : ')
@@ -100,13 +120,13 @@ passfill = driver.find_element(By.XPATH, '//*[@id="login-password"]')
 passfill.send_keys(password)
 login_to_system = driver.find_element(By.XPATH, '//*[@id="loginForm"]/button')
 login_to_system.click()
-time.sleep(10)
+time.sleep(5)
 
 try:
     
     xADS = driver.find_element(By.XPATH, '//*[@id="dialog-scroll"]/div/div/div[2]/button')
     xADS.click()
-    time.sleep(10)
+    time.sleep(5)
     try:
         xADS2 = driver.find_element(By.XPATH, '//*[@id="dialog-scroll"]/div/div/form/button')
         xADS2.click()
@@ -118,22 +138,29 @@ try:
         acceptCK = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/button')
         acceptCK.click()
         while True:
-            time.sleep(7)
-            response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
-            response_sofia = response_sofia.json()
-            
-            # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
-            # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
-            # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
-            # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
+            while True:
+                response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
+                response_sofia = response_sofia.json()
+                
+                # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
+                # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
+                # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
+                # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
 
+                if response_sofia['last_message']['content']['text'] != messagetext:
+                    break
+            
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+            sofiaSound = vlc.MediaPlayer('sofia.mp3')
+            sofiaSound.play()
 
             messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
@@ -156,19 +183,21 @@ try:
         acceptCK = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/button')
         acceptCK.click()
         while True:
-            time.sleep(7)
-            response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
-            response_sofia = response_sofia.json()
-            
-            # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
-            # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
-            # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
-            # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
+            while True:
+                response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
+                response_sofia = response_sofia.json()
+                
+                # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
+                # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
+                # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
+                # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
 
+                if response_sofia['last_message']['content']['text'] != messagetext:
+                    break
+            
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
@@ -202,22 +231,29 @@ except:
         acceptCK = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/button')
         acceptCK.click()
         while True:
-            time.sleep(7)
-            response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
-            response_sofia = response_sofia.json()
-            
-            # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
-            # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
-            # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
-            # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
+            while True:
+                response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
+                response_sofia = response_sofia.json()
+                
+                # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
+                # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
+                # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
+                # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
 
+                if response_sofia['last_message']['content']['text'] != messagetext:
+                    break
+            
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+            sofiaSound = vlc.MediaPlayer('sofia.mp3')
+            sofiaSound.play()
 
             messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
@@ -240,22 +276,29 @@ except:
         acceptCK = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/button')
         acceptCK.click()
         while True:
-            time.sleep(7)
-            response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
-            response_sofia = response_sofia.json()
-            
-            # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
-            # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
-            # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
-            # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
+            while True:
+                response_sofia = requests.get('https://my.replika.com/api/mobile/1.4/personal_bot_chat', cookies=cookies_sofia, headers=headers_sofia)
+                response_sofia = response_sofia.json()
+                
+                # GTpayloadReply= "q="+urllib.parse.quote(response_sofia['last_message']['content']['text'])+"&target=th&source=en"
+                # GTpayloadReplyResponse = requests.request("POST", url, data=GTpayloadReply, GTheaders=headers)
+                # GTpayloadReplyResponse = GTpayloadReplyResponse.json()
+                # print(GTpayloadReplyResponse['data']['translations'][0]['translatedText'])
 
+                if response_sofia['last_message']['content']['text'] != messagetext:
+                    break
+            
             MTpayloadReply = [{"Text": (response_sofia['last_message']['content']['text'])}]
             MTpayloadReplyResponse = requests.request("POST", MTurl, json=MTpayloadReply, headers=MTheaders, params=MTquerystringTH)
             MTpayloadReplyResponse = MTpayloadReplyResponse.json()
-
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             print(current_time , '|' +Fore.BLUE+ 'Sofia:' , MTpayloadReplyResponse[0]['translations'][0]['text'], '\n' , response_sofia['last_message']['content']['text']+Fore.RESET)
+
+            tts = gTTS(text=response_sofia['last_message']['content']['text'], lang='en')
+            tts.save("sofia.mp3")
+            sofiaSound = vlc.MediaPlayer('sofia.mp3')
+            sofiaSound.play()
 
             messagetext = input(Fore.GREEN+bigScreen+'You: ')
             
