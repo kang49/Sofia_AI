@@ -52,7 +52,7 @@ headers_sofia = {
 # GTheaders = {
 #     "content-type": "application/x-www-form-urlencoded",
 #     "Accept-Encoding": "application/gzip",
-#     "X-RapidAPI-Key": "a0ad4f5b58msh730a3ba6a0ea20cp1bbe21jsn49c0dfe266cd",
+#     "X-RapidAPI-Key": "your rapidapi key",
 #     "X-RapidAPI-Host": "google-translate1.p.rapidapi.com"
 # }
 
