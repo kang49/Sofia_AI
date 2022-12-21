@@ -64,7 +64,7 @@ MTquerystringEN = {"to[0]":"en","api-version":"3.0","from":"th","profanityAction
 
 MTheaders = {
 	"content-type": "application/json",
-	"X-RapidAPI-Key": "a0ad4f5b58msh730a3ba6a0ea20cp1bbe21jsn49c0dfe266cd",
+	"X-RapidAPI-Key": "your rapidapi key",
 	"X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com"
 }
 
