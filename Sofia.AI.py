@@ -95,7 +95,7 @@ else:
 
 # username = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees account: ')
 username = 'kankaweeisci123@gmail.com'
-password = ('Kang49pubg')
+password = (input('Enter your Sofia code: '))
 
 bigScreenTF = input('Do you want big screen mode? y/n : ')
 if  bigScreenTF == 'y':
