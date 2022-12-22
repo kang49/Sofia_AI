@@ -95,7 +95,7 @@ else:
 
 # username = input('Enter your '+Fore.YELLOW+'Microsoft'+Fore.RESET+' Employees account: ')
 username = 'kankaweeisci123@gmail.com'
-password = (input('Enter your Sofia code: '))
+password = getpass.getpass('Enter Sofia APIs code: ')
 
 bigScreenTF = input('Do you want big screen mode? y/n : ')
 if  bigScreenTF == 'y':
